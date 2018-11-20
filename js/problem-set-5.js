@@ -27,6 +27,13 @@ function mario() {
   ////////////// DO NOT MODIFY
 
   // WRITE YOUR EXERCISE 1 CODE HERE
+while (true) {
+  height=prompt("Enter height.");
+  if (1<=height && height<=23){
+    console.log("1");
+    break;
+  }
+}
 
   ////////////////////////// DO NOT MODIFY
   check('mario', height); // DO NOT MODIFY
