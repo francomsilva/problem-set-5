@@ -27,14 +27,23 @@ function mario() {
   ////////////// DO NOT MODIFY
 
   // WRITE YOUR EXERCISE 1 CODE HERE
-while (true) {
-  height=prompt("Enter height.");
-  if (1<=height && height<=23){
-    console.log("1");
-    break;
+  let output = document.getElementById("mario-easy-output");
+  do {
+    height = prompt("Enter height.");
+  } while (height < 1 || height > 23);
+  let x = " ";
+  for (let i=0; i < height; i++) {
+    let row = " ";
+    for (let ii=0; ii < (height - 1); ii++){
+      row = row + " &nbsp;&nbsp;";
+    }
+    row = row + "#";
+    for (let iii=0; iii < (i+1) iii++) {
+      row = row + "#";
+    }
+    x = x + row + "<br/>";
   }
-}
-
+  output.innerHTML = x;
   ////////////////////////// DO NOT MODIFY
   check('mario', height); // DO NOT MODIFY
   ////////////////////////// DO NOT MODIFY
