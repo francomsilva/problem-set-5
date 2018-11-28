@@ -27,23 +27,26 @@ function mario() {
   ////////////// DO NOT MODIFY
 
   // WRITE YOUR EXERCISE 1 CODE HERE
-  let output = document.getElementById("mario-easy-output");
-  do {
-    height = prompt("Enter height.");
-  } while (height < 1 || height > 23);
-  let x = " ";
-  for (let i=0; i < height; i++) {
-    let row = " ";
-    for (let ii=0; ii < (height - 1); ii++){
-      row = row + " &nbsp;&nbsp;";
+  let step = "#";
+  let space = "&nbsp;"
+  let row = "";
+  while(true) {
+    height = Number(prompt("Enter a height of an integer between 1 and 23:"));
+    if(height >=1 && height <=23 && Number.isInteger(height)) {
+      for(let i=0; i<height; i++) {
+        for(let x=0; x<=(height-2-i); x++) {
+          row = row + space;
+        }
+        for(let y=0; y<=(1+i); y++) {
+          row = row + step;
+        }
+        row = row + "<br/>";
+      }
+      document.getElementById("mario-easy-output").innerHTML="<code>" + row + "</code>" ;
+      break;
     }
-    row = row + "#";
-    for (let iii=0; iii < (i+1) iii++) {
-      row = row + "#";
-    }
-    x = x + row + "<br/>";
   }
-  output.innerHTML = x;
+
   ////////////////////////// DO NOT MODIFY
   check('mario', height); // DO NOT MODIFY
   ////////////////////////// DO NOT MODIFY
@@ -78,7 +81,29 @@ function marioAgain() {
   ////////////// DO NOT MODIFY
 
   // WRITE YOUR EXERCISE 2 CODE HERE
-
+  let step = "#";
+  let space = "&nbsp;"
+  let row = "";
+  while(true) {
+    height = Number(prompt("Enter a height of an integer between 1 and 23:"));
+    if(height >=1 && height <=23 && Number.isInteger(height)) {
+      for(let i=0; i<height; i++) {
+        for(let x=0; x<=(height-2-i); x++) {
+          row = row + space;
+        }
+        for(let y=0; y<=(1+i); y++) {
+          row = row + step;
+        }
+        row = row + space + space;
+        for(let v=0; v<=(1+i); v++) {
+          row = row + step;
+        }
+        row = row + "<br/>";
+      }
+      document.getElementById("mario-hard-output").innerHTML="<code>" + row + "</code>" ;
+      break;
+    }
+  }
   //////////////////////////////// DO NOT MODIFY
   check('mario-again', height); // DO NOT MODIFY
   //////////////////////////////// DO NOT MODIFY
