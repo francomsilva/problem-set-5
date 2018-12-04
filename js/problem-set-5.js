@@ -156,7 +156,44 @@ function credit() {
   //////////// DO NOT MODIFY
 
   // WRITE YOUR EXERCISE 3 CODE HERE
+  let oddSumOfNumbers = 0;
+  let evenSumOfNumbers = 0;
+  while (true){
+    card = prompt("Enter your credit card number: ");
+    if ((card.length == 16 || card.length == 15 || card.length == 13) && Number.isInteger(Number(card))){
+      break;
+    }
+  }
+  for(let i = card.length - 2; i >= 0 ; i-=2) {
+    let num = Number(card[i]) * 2;
+    let startNumber = num.toString();
+    let sumOfNumbers=0;
+    for (let j = 0; j < startNumber.length; j++){
+      sumOfNumbers = sumOfNumbers + Number(startNumber[j]);
+    }
+    evenSumOfNumbers = sumOfNumbers + evenSumOfNumbers;
+    console.log(evenSumOfNumbers);
+  }
+  for(let k = card.length-1; k >= 0; k-=2){
+    oddSumOfNumbers = oddSumOfNumbers + Number(card[k])
+  }
+  console.log(oddSumOfNumbers);
 
+  if (card.length == 15 && (card[0] == 3 &&(card[1] == 7 || card[1] == 4)) && (oddSumOfNumbers + evenSumOfNumbers)%10 == 0){
+    document.getElementById("credit-output").innerHTML="<img src ='./images/amex.png'/>";
+  }
+  else if ((card.length == 13 || card.length == 16) && card[0] == 4 && (oddSumOfNumbers + evenSumOfNumbers)%10 == 0){
+    document.getElementById("credit-output").innerHTML="<img src ='./images/visa.png'/>";
+  }
+  else if (card.length == 16 && (card[0] == 5 && (card[1] == 1 || card[1] == 2 || card[1] == 4 || card[1] == 5)) && (oddSumOfNumbers + evenSumOfNumbers)%10 == 0){
+    document.getElementById("credit-output").innerHTML="<img src ='./images/mastercard.png'/>";
+  }
+  else {
+    document.getElementById("credit-output").innerHTML="<img src ='./images/invalid.png'/>";
+  }
+
+  card=Number(card);
+  
   /*
    * NOTE: After reading in the card number and storing it in the 'card'
    *       variable, do not modify it. If you find it necessary to manipulate
@@ -327,7 +364,24 @@ function gymnastics() {
    *       scores.push(firstScore);   // your variable names for your scores
    *       scores.push(secondScore);  // will likely be different than mine
    */
-
+  let i=1;
+	while(i <= 6){
+		let inputOfScore=Number(prompt("Enter your score"));
+		if (inputOfScore >= 1 && inputOfScore <= 10 && Number.isInteger(inputOfScore)){
+			scores.push(inputOfScore);
+		i++;
+		}
+	}
+	scores.sort(function(a,b){return a-b;})
+	let maxScore = scores[5];
+	let minScore = scores[0];
+	let reviewedScores = [];
+	for(let j = 1; j < 5; j++){
+		reviewedScores.push(scores[j]);
+	}
+	let averageOfScores=((reviewedScores[0]+reviewedScores[1]+reviewedScores[2]+reviewedScores[3])/4).toFixed(2);
+	document.getElementById("gymnastics-output").innerHTML="Discarded: " + maxScore + ", " + minScore + "</br>Score: " + averageOfScores;
+  
   /////////////////////////////// DO NOT MODIFY
   check('gymnastics', scores); // DO NOT MODIFY
   /////////////////////////////// DO NOT MODIFY
@@ -379,7 +433,43 @@ function reportCard() {
    *       representative of the number of tests, quizzes, and homework
    *       grades the user enters, respectively.
    */
+  while (true){
+		let testGrades = prompt("Enter your test score");
+		if(testGrades == -1){
+			break;
+		}
+		if(Number(testGrades) >= 0 && Number(testGrades <= 100)){
+			testTotal=Number(testGrades) + testTotal;
+			tests++;
+		}
 
+	}
+	while(true){
+		let quizTests = prompt("Enter your quiz score");
+		if (quizTests == -1){
+			break;
+		}
+		if(Number(quizTests) >= 0 && Number(quizTests) <= 100){
+			quizTotal=Number(quizTests) + quizTotal;
+			quizzes++;
+		}
+	}
+	while(true){
+		let homeworkGrades = prompt("Enter your homework score");
+		if (homeworkGrades == -1){
+			break;
+		}
+		if(Number(homeworkGrades) >=0 && Number(homeworkGrades) <= 100){
+			homeworkTotal=Number(homeworkGrades) + homeworkTotal;
+			homeworks++;
+		}
+	}
+	let averageTestGrade = (testTotal/tests).toFixed(2);
+	let averageQuizGrade = (quizTotal/quizzes).toFixed(2);
+	let averageHomeworkGrade = (homeworkTotal/homeworks).toFixed(2);
+	grade=(.6 * averageTestGrade + .3 * averageQuizGrade + .1 * averageHomeworkGrade).toFixed(2);
+	document.getElementById("report-card-output").innerHTML="Tests: " + averageTestGrade + "<br/>Quizzes: " + averageQuizGrade + "<br/>Homework: " + averageHomeworkGrade + "<br/>Grade: " + grade;
+  
   /////////////////////// DO NOT MODIFY
   check('report-card', // DO NOT MODIFY
     testTotal, ////////// DO NOT MODIFY
