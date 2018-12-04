@@ -193,7 +193,7 @@ function credit() {
   }
 
   card=Number(card);
-  
+
   /*
    * NOTE: After reading in the card number and storing it in the 'card'
    *       variable, do not modify it. If you find it necessary to manipulate
@@ -380,8 +380,8 @@ function gymnastics() {
 		reviewedScores.push(scores[j]);
 	}
 	let averageOfScores=((reviewedScores[0]+reviewedScores[1]+reviewedScores[2]+reviewedScores[3])/4).toFixed(2);
-	document.getElementById("gymnastics-output").innerHTML="Discarded: " + maxScore + ", " + minScore + "</br>Score: " + averageOfScores;
-  
+	document.getElementById("gymnastics-output").innerHTML="Discarded: " + minScore + ", " + maxScore + "</br>Score: " + averageOfScores;
+
   /////////////////////////////// DO NOT MODIFY
   check('gymnastics', scores); // DO NOT MODIFY
   /////////////////////////////// DO NOT MODIFY
@@ -435,10 +435,10 @@ function reportCard() {
    */
   while (true){
 		let testGrades = prompt("Enter your test score");
-		if(testGrades == -1){
+		if(testGrades==-1){
 			break;
 		}
-		if(Number(testGrades) >= 0 && Number(testGrades <= 100)){
+		if(Number(testGrades)>=0 && Number(testGrades<=100)){
 			testTotal=Number(testGrades) + testTotal;
 			tests++;
 		}
@@ -446,20 +446,20 @@ function reportCard() {
 	}
 	while(true){
 		let quizTests = prompt("Enter your quiz score");
-		if (quizTests == -1){
+		if (quizTests==-1){
 			break;
 		}
-		if(Number(quizTests) >= 0 && Number(quizTests) <= 100){
-			quizTotal=Number(quizTests) + quizTotal;
+		if(Number(quizGrade)>=0 && Number(quizGrade)<=100){
+			quizTotal=Number(quizGrade) + quizTotal;
 			quizzes++;
 		}
 	}
 	while(true){
 		let homeworkGrades = prompt("Enter your homework score");
-		if (homeworkGrades == -1){
+		if (homeworkGrades==-1){
 			break;
 		}
-		if(Number(homeworkGrades) >=0 && Number(homeworkGrades) <= 100){
+		if(Number(homeworkGrades)>=0 && Number(homeworkGrades)<=100){
 			homeworkTotal=Number(homeworkGrades) + homeworkTotal;
 			homeworks++;
 		}
@@ -469,7 +469,7 @@ function reportCard() {
 	let averageHomeworkGrade = (homeworkTotal/homeworks).toFixed(2);
 	grade=(.6 * averageTestGrade + .3 * averageQuizGrade + .1 * averageHomeworkGrade).toFixed(2);
 	document.getElementById("report-card-output").innerHTML="Tests: " + averageTestGrade + "<br/>Quizzes: " + averageQuizGrade + "<br/>Homework: " + averageHomeworkGrade + "<br/>Grade: " + grade;
-  
+
   /////////////////////// DO NOT MODIFY
   check('report-card', // DO NOT MODIFY
     testTotal, ////////// DO NOT MODIFY
